@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # To use Geo-Spatial functionality of Postgres
     'django.contrib.gis',
+    # rest-framework
+    'rest_framework',
     # Custom Apps
     'ship_analysis',
 ]
