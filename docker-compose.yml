@@ -11,8 +11,6 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-#    networks:
-#      - polestarlogistics
 
   web:
     build: .
@@ -25,12 +23,7 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://user:password@db:polestarlogistics
-#    networks:
-#      - polestarlogistics
+
 
 volumes:
   postgres_data:
-
-#networks:
-#  polestarlogistics:
-#    driver: bridge
