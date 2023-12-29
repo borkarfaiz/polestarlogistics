@@ -27,8 +27,6 @@ COPY . /app
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
-# Run migrations
-RUN python manage.py migrate
 
 # Start gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "ShipAnalysis.wsgi:application"]
