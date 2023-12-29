@@ -1,6 +1,6 @@
+from django.contrib.gis.db import models as geomodels
 from django.core.validators import RegexValidator
 from django.db import models
-from django.contrib.gis.db import models as geomodels
 
 
 class Ship(models.Model):
