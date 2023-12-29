@@ -4,17 +4,22 @@ FROM python:3.7-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV GDAL_LIBRARY_PATH /usr/lib/libgdal.so
 
-# Set the working directory in the container
-WORKDIR /app
-
-# Install system dependencies
+# Install system dependencies including GDAL
 RUN apt-get update && apt-get install -y \
+    binutils \
+    libproj-dev \
+    gdal-bin \
+    python3-gdal \
     gcc \
     libpq-dev \
     gettext \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# Set the working directory in the container
+WORKDIR /app
 
 # Install Python dependencies
 COPY requirements.txt /app/
@@ -29,4 +34,4 @@ RUN python manage.py collectstatic --noinput
 
 
 # Start gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "ShipAnalysis.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "polestarlogistics.wsgi:application"]
