@@ -17,13 +17,9 @@ class Command(BaseCommand):
             "9247455": "Australian Spirit",
             "9595321": "MSC Preziosa",
         }
-
-        # ships = [Ship(imo_number=key, name=value) for key, value in ship_mappings.items()]
-        # Ship.objects.bulk_create(ships)
-        for key, value in ship_mappings.items():
-            Ship.objects.get_or_create(imo_number=key, name=value)
         ship_object_mappings = {
-            imo_number: Ship.objects.get(imo_number=imo_number) for imo_number in ship_mappings.keys()
+            imo_number: Ship.objects.get_or_create(imo_number=imo_number, name=ship_name)[0]
+            for imo_number, ship_name in ship_mappings.items()
         }
         with open(csv_file, newline='') as file:
             reader = csv.reader(file)
