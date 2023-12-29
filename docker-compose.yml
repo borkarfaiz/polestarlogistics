@@ -4,7 +4,7 @@ services:
   db:
     image: postgis/postgis:latest
     environment:
-      POSTGRES_DB: shipanalysisdb
+      POSTGRES_DB: polestarlogistics
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     volumes:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://user:password@db:shipanalysisdb
+      DATABASE_URL: postgres://user:password@db:polestarlogistics
 #    networks:
 #      - polestarlogistics
 

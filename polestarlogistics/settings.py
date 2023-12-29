@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'polestarlogistics.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': os.getenv('POSTGRES_DB', 'shipanalysisdb'),
+        'NAME': os.getenv('POSTGRES_DB', 'polestarlogistics'),
         'USER': os.getenv('POSTGRES_USER', 'user'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'password'),
         'HOST': 'db',
