@@ -1,6 +1,11 @@
+from django.shortcuts import render
 from rest_framework import generics
 from .models import Ship, Position
 from .serializers import ShipSerializer, PositionSerializer
+
+
+def index(request):
+    return render(request, 'index.html')
 
 
 class ShipList(generics.ListAPIView):
